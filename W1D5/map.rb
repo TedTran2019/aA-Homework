@@ -31,9 +31,10 @@ class Map
   def show
     final_idx = @map.length - 1
     @map.each_with_index do |kv_arr, i|
-      print '{' if i == 0
+      print '{' if i.zero?
       print "#{kv_arr[0]}=>#{kv_arr[1]}"
-      print (i == final_idx ? "}\n" : ', ')
+      print(i == final_idx ? "}\n" : ', ')
     end
+    nil
   end
 end
