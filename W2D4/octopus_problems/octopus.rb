@@ -56,7 +56,25 @@ def clever_octopus(fishes)
   biggest_fish
 end
 
+# O(n) dance
+def slow_dance(direction, tiles_array)
+  tiles_array.each_with_index { |tile, i| return i if tile == direction}
+end
+
+# O(1) dance
+def constant_dance(direction, tiles_dict)
+  tiles_dict[direction]
+end
+
 fishes = ['fish', 'fiiish', 'fiiiiish', 'fiiiish', 'fffish', 'ffiiiiisshh', 'fsh', 'fiiiissshhhhhh']
 p sluggish_octopus(fishes) == "fiiiissshhhhhh"
 p dominant_octopus(fishes) == "fiiiissshhhhhh"
 p clever_octopus(fishes) == "fiiiissshhhhhh"
+
+tiles_array = ["up", "right-up", "right", "right-down", "down", "left-down", "left",  "left-up" ]
+puts slow_dance("up", tiles_array) == 0
+puts slow_dance("right-down", tiles_array) == 3
+tiles_dict = {}
+tiles_array.each_with_index { |tile, i| tiles_dict[tile] = i }
+puts constant_dance("up", tiles_dict) == 0
+puts constant_dance("right-down", tiles_dict) == 3
