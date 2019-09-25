@@ -1,0 +1,5 @@
+class AddIndexToHouse < ActiveRecord::Migration[6.0]
+  def change
+    add_index :houses, :address, unique: true
+  end
+end
