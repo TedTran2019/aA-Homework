@@ -1,0 +1,22 @@
+Track Title: <%= @track.title %> <br>
+Album Title: <%= link_to "#{@track.album.title}", album_url(@track.album_id) %> <br>
+Track Number: <%= @track.ord %> <br>
+Bonus track?: <%= @track.bonus %> <br>
+Lyrics: <%= ugly_lyrics(@track.lyrics) %>
+Notes: <% @track.notes.includes(:user).each do |note| %>
+					<%= render 'notes/note', note: note %>
+			 <% end %>
+
+<form action="<%= edit_track_url %>" method="get">
+	<%= auth_token %>
+	<button type="submit">Edit</button>
+</form>
+
+<form action="<%= track_url(@track) %>" method="post">
+	<input type="hidden" name="_method" value="delete">
+	<%= auth_token %>
+	<button type="submit">Delete</button>
+</form>
+
+<%= render 'notes/form.html.erb', track_id: @track.id %>
+
