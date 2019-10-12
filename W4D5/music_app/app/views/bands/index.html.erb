@@ -1,5 +1,5 @@
 <% @bands.each do |band| %>
-	<%= link_to "#{band.name}", band_url(band) %>
+	Bands: <%= link_to "#{band.name}", band_url(band) %> <br>
 <% end %>
 
 <%= link_to 'Create a band!', new_band_url %>
